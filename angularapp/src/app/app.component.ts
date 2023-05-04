@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public forecasts?: todolist[];
+  public tasklists?: todolist[];
 
   constructor(http: HttpClient) {
     http.get<todolist[]>('/todolist').subscribe(result => {
-      this.forecasts = result;
+      this.tasklists = result;
     }, error => console.error(error));
   }
 

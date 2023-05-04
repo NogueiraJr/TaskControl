@@ -2,9 +2,9 @@
 
 <p>Este componente demonstra a obtenção de dados do servidor.</p>
 
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+<p *ngIf="!tasklists"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
-<table *ngIf="forecasts">
+<table *ngIf="tasklists">
     <thead>
         <tr>
             <th>Data</th>
@@ -14,11 +14,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.valMin }}</td>
-            <td>{{ forecast.valMax }}</td>
-            <td>{{ forecast.summary }}</td>
+        <tr *ngFor="let tasklist of tasklists">
+            <td>{{ tasklist.date }}</td>
+            <td>{{ tasklist.valMin }}</td>
+            <td>{{ tasklist.valMax }}</td>
+            <td>{{ tasklist.summary }}</td>
         </tr>
     </tbody>
 </table>
