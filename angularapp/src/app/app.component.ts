@@ -20,7 +20,7 @@ export class AppComponent {
 
 interface todolist {
   date: string;
-  temperatureC: number;
-  temperatureF: number;
+  valMin: number;
+  valMax: number;
   summary: string;
 }

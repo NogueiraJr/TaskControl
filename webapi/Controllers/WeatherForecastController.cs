@@ -24,7 +24,7 @@ public class todolistController : ControllerBase
         return Enumerable.Range(1, 15).Select(index => new todolist
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-1, 9),
+            valMin = Random.Shared.Next(-1, 9),
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
