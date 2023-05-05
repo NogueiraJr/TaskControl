@@ -15,11 +15,11 @@ export class AppComponent {
     }, error => console.error(error));
   }
 
-  title = 'angularapp';
+  title = 'B3 Test';
 }
 
 interface todolist {
   description: string;
-  duedate: Date;
+  duedate: string;
   situation: string;
 }

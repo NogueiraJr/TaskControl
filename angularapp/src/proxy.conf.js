@@ -1,9 +1,9 @@
 const PROXY_CONFIG = [
   {
     context: [
-      "/todolist",
+      "/TodoList",
     ],
-    target: "https://localhost:4200",
+    target: "https://localhost:7031",
     secure: false
   }
 ]
