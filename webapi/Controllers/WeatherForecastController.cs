@@ -1,32 +1,52 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace webapi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class todolistController : ControllerBase
+public class TodoListController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Ativa", "Completa", "Pausada", "Cancelada", "Encaminhada", "Arquivada"
     };
 
-    private readonly ILogger<todolistController> _logger;
+    private readonly TodoListContext _context;
+    private readonly ILogger<TodoListController> _logger;
 
-    public todolistController(ILogger<todolistController> logger)
+    public TodoListController(TodoListContext context, ILogger<TodoListController> logger)
     {
+        _context = context;
         _logger = logger;
     }
 
     [HttpGet(Name = "Gettodolist")]
-    public IEnumerable<todolist> Get()
+    public async Task<IEnumerable<TodoList>> Get()
     {
-        return Enumerable.Range(1, 15).Select(index => new todolist
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            valMin = Random.Shared.Next(-1, 9),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        return await _context.TodoLists.ToListAsync();
     }
+}
+
+public class TodoList
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public DateTime Date { get; set; }
+    public int valMin { get; set; }
+    public string Summary { get; set; }
+}
+
+public class TodoListContext : DbContext
+{
+    public TodoListContext(DbContextOptions<TodoListContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<TodoList> TodoLists { get; set; }
 }
