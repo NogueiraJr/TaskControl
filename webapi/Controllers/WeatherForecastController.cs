@@ -28,17 +28,17 @@ public class TodoListController : ControllerBase
     [HttpGet(Name = "Gettodolist")]
     public async Task<IEnumerable<TodoList>> Get()
     {
-        return await _context.TodoLists.ToListAsync();
+        var ret = await _context.TodoLists.ToListAsync();
+        return ret;
     }
 }
 
 public class TodoList
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-    public DateTime Date { get; set; }
-    public int valMin { get; set; }
-    public string Summary { get; set; }
+    public string Description { get; set; }
+    public DateTime DueDate { get; set; }
+    public string Situation { get; set; }
 }
 
 public class TodoListContext : DbContext

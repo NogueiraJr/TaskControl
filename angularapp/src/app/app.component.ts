@@ -10,7 +10,7 @@ export class AppComponent {
   public tasklists?: todolist[];
 
   constructor(http: HttpClient) {
-    http.get<todolist[]>('/todolist').subscribe(result => {
+    http.get<todolist[]>('/TodoList').subscribe(result => {
       this.tasklists = result;
     }, error => console.error(error));
   }
@@ -19,8 +19,7 @@ export class AppComponent {
 }
 
 interface todolist {
-  date: string;
-  valMin: number;
-  valMax: number;
-  summary: string;
+  description: string;
+  duedate: Date;
+  situation: string;
 }

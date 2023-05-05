@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("TodoListContext");
 
 builder.Services.AddDbContext<TodoListContext>(options =>
     options.UseSqlServer(connectionString));

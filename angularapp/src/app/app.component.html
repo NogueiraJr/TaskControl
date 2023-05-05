@@ -7,18 +7,16 @@
 <table *ngIf="tasklists">
     <thead>
         <tr>
-            <th>Data</th>
-            <th>Peso Min</th>
-            <th>Peso Max</th>
-            <th>Estado</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Situation</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let tasklist of tasklists">
-            <td>{{ tasklist.date }}</td>
-            <td>{{ tasklist.valMin }}</td>
-            <td>{{ tasklist.valMax }}</td>
-            <td>{{ tasklist.summary }}</td>
+            <td>{{ tasklist.description }}</td>
+            <td>{{ tasklist.duedate }}</td>
+            <td>{{ tasklist.situation }}</td>
         </tr>
     </tbody>
 </table>
